@@ -1,0 +1,20 @@
+{
+  "name": "Loft Catalog",
+  "description": "E-сommerce catalog",
+  "authors": [
+    {
+      "name":"Eugene",
+      "email":"eugenevasilsov@gmail.com"
+    }
+  ],
+
+  "require": {
+    "phpmailer/phpmailer": "dev-master",
+    "twig/twig":"dev-master"
+  },
+  "autoload":{
+    "classmap":[
+      "app/"
+    ]
+  }
+}

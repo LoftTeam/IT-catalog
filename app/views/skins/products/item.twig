@@ -1,0 +1,70 @@
+{% extends 'templates/template_main.twig' %}
+{%  block  content %}
+    <section class="h1">{{ product_item.title }}</section>
+    <section class="item">
+        <div class="item_left">
+            <div class="item_card_view">
+                <div class="category_list_show">
+                    <a class="category_show_full">
+                        <div class="category_full_wrap">
+                            {% if product_item.img %}
+                            <img src="{{ product_item.img }}" alt="">
+                            {% else %}
+                                <img src="/images/content/no-image.png" width="106" height="86" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="category_full_mask"></div>
+                    </a>
+
+                </div>
+            </div>
+            <div class="category_order_rating">
+                <div class="category_rating_title">На складе:
+                    {% if product_item == 0 %}
+                        Нет на складе
+                    {% else %}
+                        {{ product_item.count }}
+                    {% endif %}
+                </div>
+                <ul class="category_rating_count">
+
+                </ul>
+            </div>
+        </div>
+        <div class="item_right">
+
+            <ul class="item_counts">
+                <li>
+                    <div class="item_counts_price">
+                        цена за 1 штуку: <span class="cart_counter">{{ product_item.price }}</span> руб.
+                    </div>
+                </li>
+
+            </ul>
+            <div class="category_buy_counter">
+                <form action="">
+                    <div class="text_input">
+                        <div class="text_input_wrap">
+                            <input class="category_count_input" type="text"/>
+                        </div>
+                    </div>
+
+                    <a href="#" class="category_count_button">В корзину</a>
+                    <input class="category_count_submit" type="submit"/>
+                </form>
+            </div>
+        </div>
+        <div class="item_properties">
+            <ul class="item_prop_list">
+
+                <li>
+                    <div class="item_prop_title">Описание</div>
+                    <ul class="item_prop_options">
+                        {{ product_item.description }}
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+{% endblock %}

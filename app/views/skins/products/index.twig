@@ -1,0 +1,21 @@
+{% extends 'templates/template_main.twig' %}
+{%  block  content %}
+<section class="h1">Продукция</section>
+<ul class="products">
+    {% for product in products %}
+        <li>
+            <a href="/products/view/{{ product.id }}">
+                {% if product.img %}
+                    <img src="{{ product.img }}" alt="{{ product.title }}">
+                {% else %}
+                    <img src="/images/content/no-image.png" width="106" height="86" alt="{{ product.title }}">
+                {% endif %}
+                <div class="products_title">
+                    <span>{{ product.title }}</span>
+                </div>
+
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
