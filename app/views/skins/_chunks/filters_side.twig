@@ -3,9 +3,9 @@
         <div class="box">
             <h3 class="categories_title">Категория товара</h3>
             <select id="category_filter" name="category_id">
-                <?php foreach ($categories as $category): ?>
-                    <option value="<?= $category['id']; ?>"><?= $category['title']; ?></option>
-                <?php endforeach; ?>
+                {% for category in categories  %}
+                    <option value="{{ category.id }}">{{ category.title }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="box">
