@@ -10,55 +10,55 @@
             {% if result %}
                 <p>Вы зарегистрированы</p>
                 <a href="/main">На главную страницу</a>
-            {% endif %}
-            {% if errors %}
-                <ul>
-                    {% for error in errors %}
-                        <li style="color: red;"> - {{ error }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-            <div class="authorize_inner_top"></div>
+            {% else %}
+                {% if errors %}
+                    <ul>
+                        {% for error in errors %}
+                            <li style="color: red;"> - {{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <div class="authorize_inner_top"></div>
 
-            <form action="" method="post">
+                <form action="" method="post">
 
-                <label class="register_label">
-                    <span class="register_text">Имя</span>
-                                <span class="text_input">
-                                    <span class="text_input_wrap">
-                                <input type="text" name="name" placeholder="Имя" />
+                    <label class="register_label">
+                        <span class="register_text">Имя</span>
+                                    <span class="text_input">
+                                        <span class="text_input_wrap">
+                                    <input type="text" name="name" placeholder="Имя" />
+                                    </span>
                                 </span>
-                            </span>
-                </label>
+                    </label>
 
-                <label class="register_label">
-                    <span class="register_text">E-mail</span>
-                                <span class="text_input">
-                                    <span class="text_input_wrap">
-                                <input type="email" name="email" placeholder="E-mail" />
+                    <label class="register_label">
+                        <span class="register_text">E-mail</span>
+                                    <span class="text_input">
+                                        <span class="text_input_wrap">
+                                    <input type="email" name="email" placeholder="E-mail" />
+                                    </span>
                                 </span>
-                            </span>
-                </label>
+                    </label>
 
-                <label class="register_label">
-                    <span class="register_text">Пароль</span>
-                                <span class="text_input">
-                                    <span class="text_input_wrap">
-                                <input type="password" name="password" placeholder="Пароль">
+                    <label class="register_label">
+                        <span class="register_text">Пароль</span>
+                                    <span class="text_input">
+                                        <span class="text_input_wrap">
+                                    <input type="password" name="password" placeholder="Пароль">
+                                    </span>
                                 </span>
-                            </span>
-                </label>
+                    </label>
 
-                <div class="authorize_footer">
+                    <div class="authorize_footer">
 
-                    <input name="submit" type="submit" value="Регистрация">
-                    <div class="authorize_submit_block">
+                        <input name="submit" type="submit" value="Регистрация">
+                        <div class="authorize_submit_block">
+
+                        </div>
 
                     </div>
-
-                </div>
-            </form>
-            <?php endif; ?>
+                </form>
+            {% endif %}
             <div class="authorize_inner_bottom"></div>
         </div>
     </div>

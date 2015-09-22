@@ -36,6 +36,8 @@ class RegisterController extends  Controller{
                 $errors[] = 'Пароль не должен быть короче 6-и символов';
             }
 
+            $password = RegisterModel::hash_pass($password);
+
             if($errors == false){
                 // SAVE USER
                 $result = $this->model->signUp($name, $email, $password);
@@ -44,8 +46,8 @@ class RegisterController extends  Controller{
 
         $data = array(
             'title' => 'Регистрация',
-            'result'=>$result,
-            'errors'=>$errors,
+            'result'=> $result,
+            'errors'=> $errors,
         );
         $this->view->render('register.twig',$data);
 

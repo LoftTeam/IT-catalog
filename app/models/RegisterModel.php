@@ -2,6 +2,11 @@
 
 class RegisterModel extends Model{
 
+    public static function hash_pass($password)
+    {
+        return hash('ripemd160', $password );
+    }
+
     public function signUp($name, $email, $password){
 
         $sql = 'INSERT INTO users (name, email, password) '
