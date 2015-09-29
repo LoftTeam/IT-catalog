@@ -1,6 +1,6 @@
 <?php
 
-class MainController extends  Controller
+class MainController extends FrontendController
 {
     function actionIndex()
     {
@@ -8,8 +8,10 @@ class MainController extends  Controller
             'title' => 'Главная страница',
             'is_photo_slider' => true,
             'is_slider' => true,
-            'is_right_sidebar' => true
+            'is_right_sidebar' => true,
+
         );
+
         $this->view->render('main_view.twig',$data);
     }
 }

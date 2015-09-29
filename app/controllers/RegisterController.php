@@ -1,6 +1,6 @@
 <?php
 
-class RegisterController extends  Controller{
+class RegisterController extends  FrontendController{
 
     public function __construct(){
         parent::__construct();
@@ -10,6 +10,8 @@ class RegisterController extends  Controller{
     function actionIndex()
     {
         $name = '';
+        $lastname = '';
+        $bithday = '';
         $email = '';
         $password = '';
         $result = '';
@@ -17,11 +19,17 @@ class RegisterController extends  Controller{
 
         if(isset($_POST['submit'])) {
             $name = $_POST['name'];
+            $lastname = $_POST['lastname'];
+            $bithday = $_POST['bithday'];
             $email = $_POST['email'];
             $password = $_POST['password'];
 
             if(!RegisterModel::checkName($name)){
                 $errors[] = 'Имя не должно быть короче 2-ух символов';
+            }
+
+            if(!RegisterModel::checkDate($bithday)){
+                $errors[] = 'Дата рождения не валидна - '.$bithday;
             }
 
             if(!RegisterModel::checkEmail($email)){
@@ -36,11 +44,11 @@ class RegisterController extends  Controller{
                 $errors[] = 'Пароль не должен быть короче 6-и символов';
             }
 
-            $password = RegisterModel::hash_pass($password);
+            $password = UserModel::encrypt_pass($password);
 
             if($errors == false){
                 // SAVE USER
-                $result = $this->model->signUp($name, $email, $password);
+                $result = $this->model->signUp($name, $lastname, $bithday , $email, $password);
             }
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-class AboutController extends  Controller
+class AboutController extends  FrontendController
 {
     function actionIndex()
     {

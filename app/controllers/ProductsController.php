@@ -1,6 +1,6 @@
 <?php
 
-class ProductsController extends  Controller
+class ProductsController extends  FrontendController
 {
     public function __construct(){
         parent::__construct();

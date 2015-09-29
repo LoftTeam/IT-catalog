@@ -1,6 +1,6 @@
 <?php
 
-class ContactsController extends  Controller
+class ContactsController extends  FrontendController
 {
     function actionIndex()
     {

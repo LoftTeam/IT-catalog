@@ -2,18 +2,15 @@
 
 class RegisterModel extends Model{
 
-    public static function hash_pass($password)
-    {
-        return hash('ripemd160', $password );
-    }
+    public function signUp($name, $lastname, $bithday, $email, $password){
 
-    public function signUp($name, $email, $password){
-
-        $sql = 'INSERT INTO users (name, email, password) '
-            . 'VALUES (:name, :email, :password)';
+        $sql = 'INSERT INTO users (name, lastname, birthday, email, password) '
+            . 'VALUES (:name,:lastname,:bithday, :email, :password)';
 
         $result = $this->_pdo->prepare($sql);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':lastname', $lastname, PDO::PARAM_STR);
+        $result->bindParam(':bithday', $bithday, PDO::PARAM_STR);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->bindParam(':password', $password, PDO::PARAM_STR);
 
@@ -25,6 +22,12 @@ class RegisterModel extends Model{
             return true;
         }
         return false;
+    }
+
+    public static function checkDate($date, $format = 'Y-m-d')
+    {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
     }
 
     public static function checkEmail($email){

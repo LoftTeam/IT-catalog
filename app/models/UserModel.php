@@ -1,0 +1,62 @@
+<?php
+
+
+class UserModel extends Model
+{
+
+    public static function encrypt_pass($password)
+    {
+        return  md5(md5(trim($password)));
+    }
+
+    /*
+     * Получить пользователя по Email
+     */
+    public function getUserByEmail($email)
+    {
+        $sql = "SELECT id,name,lastname,birthday,email,password,is_active,role,reg_date,last_update,user_hash
+            FROM users
+            WHERE email = :email;
+        ";
+
+        $result = $this->_pdo->prepare($sql);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+
+        $result->execute();
+
+        $records = $result->fetch(PDO::FETCH_ASSOC);
+        return $records;
+
+    }
+
+    /*
+    * Функция для генерации случайной строки
+    */
+    public static function  generateCode($length=6) {
+
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
+
+        $code = "";
+
+        $clen = strlen($chars) - 1;
+        while (strlen($code) < $length){
+            $code .= $chars[mt_rand(0,$clen)];
+        }
+
+         return $code;
+    }
+
+    public static function updateUserHashById($id,$hash)
+    {
+        $sql = 'UPDATE users SET user_hash = :hash
+                WHERE id = :id';
+
+        $result = $this->_pdo->prepare($sql);
+        $result->bindParam(':hash', $hash, PDO::PARAM_STR);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $result->execute();
+    }
+
+
+}

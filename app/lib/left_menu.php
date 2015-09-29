@@ -1,32 +1,30 @@
 
 <?php
 
-class Left_menu extends  Model
+class Left_menu
 {
-    function get_left_menu()
+    public $cat;
+
+    public function __construct($cat)
     {
-        $sql = "SELECT id, title FROM category_products";
-
-        $result = $this->_pdo->query($sql);
-
-        if(!$result){
-            return $result;
-        }
-        $records = $result->fetchAll(PDO::FETCH_ASSOC);
-        return $records;
+        $this->cat = $cat;
     }
 
-    function get_left_menu_items_by_category_id($id)
+    public function get_left_menu()
     {
-        $sql = "SELECT id , title FROM products WHERE id_catalog = {$id}";
-
-        $result = $this->_pdo->query($sql);
-
-        if(!$result){
-            return $result;
+        $res = array();
+        $cat =  $this->cat;
+        for($i=0,$data=count($cat); $i<$data;$i++ )
+        {
+            $res[] = $cat[$i];
         }
-        $records = $result->fetchAll(PDO::FETCH_ASSOC);
-        return $records;
+
+        var_dump($res);
+    }
+
+    public function get_left_category()
+    {
+
     }
 }
 
