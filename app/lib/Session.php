@@ -3,6 +3,7 @@
 
 class Session
 {
+    private $data = array();
     private $alive = false;
 
     function __construct()
@@ -10,41 +11,41 @@ class Session
         session_start();
     }
 
-    function __destruct()
-    {
-
-    }
-
-    public function delete()
+    public static function delete()
     {
         session_destroy();
-        $this->alive = false;
+
+        unset($_COOKIE['id']);
+        setcookie('id', null, -1, '/');
+
+        unset($_COOKIE['hash']);
+        setcookie('hash', null, -1, '/');
     }
 
-    public function start()
+    public function start($data,$hash)
     {
-        $this->alive = true;
+        session_start();
+
+        setcookie("id", $data['id'], time()+60*60*24*30);
+        setcookie("hash", $hash, time()+60*60*24*30);
+
+        $_SESSION['user_id'] = $data['id'];
+        $_SESSION['user_name'] = $data['name'];
+        $_SESSION['role'] = $data['role'];
     }
 
-    public function status()
+    public static function is_logged()
     {
-        var_dump($this->alive);
+        if(isset($_COOKIE['id']) and isset($_COOKIE['hash'])){
+
+            $model = new UserModel();
+
+            if($user = $model->getUserByID($_COOKIE['id'])){
+                if($user['user_hash'] == $_COOKIE['hash']){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-
-    private function read($sid)
-    {
-
-    }
-
-    private function write($sid, $data)
-    {
-
-    }
-
-    private function destroy($sid)
-    {
-
-    }
-
-
 }

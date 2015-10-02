@@ -10,6 +10,25 @@ class UserModel extends Model
     }
 
     /*
+     * Получить пользователя по Id
+     */
+    public function getUserByID($id)
+    {
+        $sql = "SELECT id,name,lastname,birthday,email,password,is_active,role,reg_date,last_update,user_hash
+            FROM users
+            WHERE id = :id;
+        ";
+
+        $result = $this->_pdo->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $result->execute();
+
+        $records = $result->fetch(PDO::FETCH_ASSOC);
+        return $records;
+
+    }
+    /*
      * Получить пользователя по Email
      */
     public function getUserByEmail($email)
@@ -46,7 +65,7 @@ class UserModel extends Model
          return $code;
     }
 
-    public static function updateUserHashById($id,$hash)
+    public function updateUserHashById($id,$hash)
     {
         $sql = 'UPDATE users SET user_hash = :hash
                 WHERE id = :id';

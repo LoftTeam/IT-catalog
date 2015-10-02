@@ -6,9 +6,12 @@
         <div class="fancy_title">
             <p>Авторизация</p>
         </div>
+
         <div class="authorize_body_inner">
             <div class="authorize_inner_top"></div>
-
+            {% if user_name %}
+                <h5>{{ user_name }} уже авторизирован(а)</h5>
+            {% else %}
             <form action="" method="post"
 
             <label class="register_label">
@@ -38,7 +41,7 @@
                 </div>
             </div>
             </form>
-
+            {% endif %}
             <div class="authorize_inner_bottom"></div>
         </div>
     </div>

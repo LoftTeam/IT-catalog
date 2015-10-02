@@ -9,42 +9,56 @@ class AuthController extends  FrontendController
 
     function actionIndex()
     {
-
         if(isset($_POST['submit'])){
 
             $email = $_POST['email'];
             $password = $_POST['password'];
 
             if($user = $this->model->getUserByEmail($email)){
+                if($user['id'] != $_SESSION['user_id']){
+                    if($user['password'] == UserModel::encrypt_pass($password)){
+                        $hash = md5(UserModel::generateCode(10));
 
-                if($user['password'] == UserModel::encrypt_pass($password)){
-                    $hash = md5(UserModel::generateCode(10));
+                        $this->model->updateUserHashById($user['id'],$hash);
 
-                    UserModel::updateUserHashById($user['id'],$hash);
+                        $data = array(
+                            'id'=> $user['id'],
+                            'name'=> $user['name'],
+                            'is_active' => $user['is_active'],
+                            'role' =>$user['role'],
+                            'is_logged'=>Session::is_logged(),
+                        );
+                        $this->session->start($data,$hash);
 
-                    setcookie("id", $user['id'], time()+60*60*24*30);
-                    setcookie("hash", $hash, time()+60*60*24*30);
-
-                    $this->session->start();
-
-
+                        if($user['role'] == 2){
+                            header("Location: /admin/");
+                        }else{
+                            header("Location: / ");
+                        }
                 }else{
-                    $errors[] = 'Неверен пароль';
+                        $errors[] = "Пользователь {$user['name']} уже авторизирован";
+                    }
+                }else{
+
                 }
             }else{
                 $errors[] = 'Неверен Email';
             }
-
-
         }else{
 
             $data = array(
                 'title' => 'Авторизация',
+                'is_logged'=>Session::is_logged(),
+                'user_name'=> (isset($_SESSION['user_name'])) ? $_SESSION['user_name'] : null,
             );
-
             $this->view->render('auth_view.twig',$data);
         }
+    }
 
+    public function actionLogout()
+    {
+        Session::delete();
 
+        header("Location: / ");
     }
 }

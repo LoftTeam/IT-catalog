@@ -56,6 +56,7 @@ class RegisterController extends  FrontendController{
             'title' => 'Регистрация',
             'result'=> $result,
             'errors'=> $errors,
+            'is_logged'=>Session::is_logged(),
         );
         $this->view->render('register.twig',$data);
 

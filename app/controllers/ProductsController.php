@@ -27,6 +27,7 @@ class ProductsController extends  FrontendController
                     'is_filters_side'=>true,
                     'products' => $this->model->filter_data($category_id,$from,$to,$brand),
                     'categories'=> $this->model->get_categories(),
+                    'is_logged'=>Session::is_logged(),
                 );
                 $this->view->render('products/index.twig',$data);
             }
@@ -37,6 +38,7 @@ class ProductsController extends  FrontendController
                 'is_filters_side'=>true,
                 'products' => $this->model->get_data(),
                 'categories'=> $this->model->get_categories(),
+                'is_logged'=>Session::is_logged(),
             );
             $this->view->render('products/index.twig',$data);
         }
@@ -49,7 +51,8 @@ class ProductsController extends  FrontendController
 
         $data = array(
             'title' => $data['title'],
-            'product_item' => $data
+            'product_item' => $data,
+            'is_logged'=>Session::is_logged(),
         );
         $this->view->render('products/item.twig',$data);
     }
