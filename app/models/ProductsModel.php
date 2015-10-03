@@ -10,7 +10,7 @@ class ProductsModel extends Model
                 FROM products
                 LEFT JOIN category_products ON products.id_catalog = category_products.id";
 
-        $result = $this->_pdo->query($sql);
+        $result = $this->DB->query($sql);
         if(!$result){
             return $result;
         }
@@ -31,7 +31,7 @@ class ProductsModel extends Model
                 AND products.price <= $to
                 ";
 
-        $result = $this->_pdo->query($sql);
+        $result = $this->DB->query($sql);
         if(!$result){
             return $result;
         }
@@ -46,7 +46,7 @@ class ProductsModel extends Model
                 FROM products
                 LEFT JOIN category_products ON products.id_catalog = category_products.id WHERE products.id = :id";
 
-        $stmt = $this->_pdo->prepare($sql);
+        $stmt = $this->DB->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         $records = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -56,7 +56,7 @@ class ProductsModel extends Model
     public function get_categories()
     {
         $sql = "SELECT id,title FROM  category_products";
-        $result = $this->_pdo->query($sql);
+        $result = $this->DB->query($sql);
         if(!$result){
             return $result;
         }

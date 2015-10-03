@@ -7,7 +7,7 @@ class RegisterModel extends Model{
         $sql = 'INSERT INTO users (name, lastname, birthday, email, password) '
             . 'VALUES (:name,:lastname,:bithday, :email, :password)';
 
-        $result = $this->_pdo->prepare($sql);
+        $result = $this->DB->prepare($sql);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
         $result->bindParam(':lastname', $lastname, PDO::PARAM_STR);
         $result->bindParam(':bithday', $bithday, PDO::PARAM_STR);
@@ -39,7 +39,7 @@ class RegisterModel extends Model{
 
     public function checkEmailExists($email){
         $sql = 'SELECT COUNT(*) FROM users WHERE email = :email';
-        $result = $this->_pdo->prepare($sql);
+        $result = $this->DB->prepare($sql);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->execute();
 

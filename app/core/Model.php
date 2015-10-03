@@ -3,13 +3,24 @@
 abstract class Model
 {
     /**
-     * @var PDO
+     * @var DB
      */
-    protected $_pdo;
+    protected $DB;
+    private $settings;
 
     public function __construct(){
-        $this->_pdo = new PDO('mysql:dbname=loft_catalog;host=localhost', 'root', '');
-        $this->_pdo->query("SET NAMES 'utf8'");
+        try {
+
+            $this->settings = parse_ini_file(ROOT."/app/config/config.ini");
+            $dsn = 'mysql:dbname='.$this->settings["dbname"].';host='.$this->settings["host"].'';
+
+            $this->DB = new PDO($dsn, $this->settings["user"],$this->settings["password"]);
+            $this->DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->DB->exec('SET NAMES "utf8"');
+        } catch (PDOException $e) {
+            echo 'Невозможно подключиться к серверу баз данных.';
+            exit();
+        }
     }
 
 

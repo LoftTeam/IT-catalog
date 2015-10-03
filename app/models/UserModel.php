@@ -19,7 +19,7 @@ class UserModel extends Model
             WHERE id = :id;
         ";
 
-        $result = $this->_pdo->prepare($sql);
+        $result = $this->DB->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
 
         $result->execute();
@@ -38,7 +38,7 @@ class UserModel extends Model
             WHERE email = :email;
         ";
 
-        $result = $this->_pdo->prepare($sql);
+        $result = $this->DB->prepare($sql);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
 
         $result->execute();
@@ -70,7 +70,7 @@ class UserModel extends Model
         $sql = 'UPDATE users SET user_hash = :hash
                 WHERE id = :id';
 
-        $result = $this->_pdo->prepare($sql);
+        $result = $this->DB->prepare($sql);
         $result->bindParam(':hash', $hash, PDO::PARAM_STR);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
 

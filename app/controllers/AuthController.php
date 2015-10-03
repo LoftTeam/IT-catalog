@@ -15,7 +15,6 @@ class AuthController extends  FrontendController
             $password = $_POST['password'];
 
             if($user = $this->model->getUserByEmail($email)){
-                if($user['id'] != $_SESSION['user_id']){
                     if($user['password'] == UserModel::encrypt_pass($password)){
                         $hash = md5(UserModel::generateCode(10));
 
@@ -36,23 +35,23 @@ class AuthController extends  FrontendController
                             header("Location: / ");
                         }
                 }else{
-                        $errors[] = "Пользователь {$user['name']} уже авторизирован";
+                        $errors[] = "Пароль не верен";
                     }
-                }else{
 
-                }
             }else{
                 $errors[] = 'Неверен Email';
             }
-        }else{
 
+
+        }
             $data = array(
                 'title' => 'Авторизация',
                 'is_logged'=>Session::is_logged(),
                 'user_name'=> (isset($_SESSION['user_name'])) ? $_SESSION['user_name'] : null,
+                'errors'=>(isset($errors)) ? $errors : null,
             );
             $this->view->render('auth_view.twig',$data);
-        }
+
     }
 
     public function actionLogout()
