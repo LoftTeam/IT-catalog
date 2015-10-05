@@ -44,3 +44,10 @@ composer install
 ```
 2. В файле app/config/config.ini изменить парамметры доступа на свои.
 3. Папка с БД  находится в /tmp
+
+## Для разработки
+	
+После создания дополнительных файлов на пример "IndexController.php" или "IndexModel.php" обязательно обновляем composer командой
+```sh
+composer dump-autoload
+```
