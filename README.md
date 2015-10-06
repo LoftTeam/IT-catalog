@@ -1,4 +1,4 @@
-# IT-catalog - это очень шустрый интернет каталог.
+# IT-catalog
 
 Какие технологии используются: PHP 5.6, MYSQL, javascript, jquery, composer, phpmailer, twig.
 

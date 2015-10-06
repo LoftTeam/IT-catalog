@@ -20,4 +20,21 @@ class ClearInput
         }
         return $data;
     }
+
+    public static function cheackPhone($phone)
+    {
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+        if(strlen($phone) === 10) {
+            return $phone;
+        }
+        return false;
+    }
+
+    public static function validate_email($email)
+    {
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return $email;
+        }
+        return false;
+    }
 }

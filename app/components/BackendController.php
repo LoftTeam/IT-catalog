@@ -8,7 +8,7 @@ class BackendController extends Controller
         parent::__construct();
 
         if((Session::is_logged() === false) or $_SESSION['role'] != 2 ) {
-            header("Location: / ");
+            header("Location: /auth/index/ ");
         }
 
     }
