@@ -3,6 +3,17 @@
 
 class UserModel extends Model
 {
+    public function getAllusers()
+    {
+        $sql = "SELECT id,name,lastname,birthday,email,password,is_active,role,reg_date,last_update,user_hash
+            FROM users;";
+
+        $result = $this->DB->prepare($sql);
+        $result->execute();
+
+        $records = $result->fetchAll(PDO::FETCH_ASSOC);
+        return $records;
+    }
 
     public static function encrypt_pass($password)
     {

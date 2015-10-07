@@ -20,7 +20,25 @@
 <div class="wrap">
     <div class="container">
         <h3><a  href="/">Перейти на главную</a></h3>
-        {% block content %}{% endblock %}
+        <div class="jumbotron">
+            <h1>Привет, {{ user_name }}!</h1>
+            <p>...</p>
+            <p><a class="btn btn-primary btn-lg" href="/auth/logout" role="button">Log out</a></p>
+        </div>
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="/admin/">Панель управления</a></li>
+                <li><a href="/admincategory/">Категории товаров</a></li>
+                <li><a href="/adminproducts/">Товары</a></li>
+                <li><a href="/adminorders/">Заказы</a></li>
+                <li><a href="/adminusers/">Пользователи</a></li>
+                <li><a href="/adminexport/">Выгрузка / загрузка товаров</a></li>
+                <li><a href="/adminmail/">Рассылка писем</a></li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            {% block content %}{% endblock %}
+        </div>
     </div>
 </div>
 

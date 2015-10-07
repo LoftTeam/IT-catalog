@@ -71,38 +71,21 @@ class ContactsController extends  FrontendController
 
             if(!isset($errors)){
 
-                        $mail = new PHPMailer;
+                $body = "ФИО: $fio <br/>
+                      Телефон: $phone <br/>
+                      Email: $email <br/>
+                      $message";
+                $subject = 'Форма связаться с нами';
+                $emails[] = $config['admin_email'];
 
-                        $mail->isSMTP();                                      // Set mailer to use SMTP
-                        $mail->Host = 'smtp.mail.ru';  // Specify main and backup SMTP servers
-                        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                        $mail->SMTPSecure = 'ssl';
-                        $mail->CharSet = 'UTF-8';
-                        $mail->Port = 465;                                    // TCP port to connect to
+                try {
+                    $mail = new SendEmail($body,$emails,$subject);
+                    $result = 'Письмо успешно отправлено';
 
-                        $body = "ФИО: $fio <br/>
-                                         Телефон: $phone <br/>
-                                        Email: $email <br/>
-                                        $message";
-
-                        $mail->Username = 'loftteam@mail.ru';           // SMTP username
-                        $mail->Password = '5F6GVToU';                         // SMTP password
-
-                        $mail->setFrom('loftteam@mail.ru', 'Администратор LoftTeam');
-
-                        $mail->Subject = 'ВЫдуманная тема письма';
-                        $mail->Body = $body;
-
-                        $adress = 'eugenevasilsov@gmail.com';
-                        $mail->AddAddress($adress,'Евгению Васильцову');
-
-                        if(!$mail->send()) {
-                            $errors[] = 'Сообщение не доставлено!';
-                        } else {
-                            $result = 'Сообщение успешно доставлено!';
-                        }
+                }catch (Exception $e){
+                    $errors[] = $e->getMessage();
+                }
             }
-
         }
 
         $data = array(
