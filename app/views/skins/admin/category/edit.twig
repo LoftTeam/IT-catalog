@@ -1,0 +1,23 @@
+{% extends 'templates/template_admin.twig' %}
+{%  block  content %}
+
+    <h1>Редактирование категории товаров</h1>
+    {% if result %}
+        <p class="alert alert-success">{{ result }}</p>
+    {% else %}
+        {% if errors %}
+            {% for error in errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+            {% endfor %}
+        {% endif  %}
+
+        <form method="post">
+            <div class="form-group">
+                <label for="iputCategoryName">Название категории</label>
+                <input value="{{ category.title }}" name="category_name" type="text" class="form-control" id="iputCategoryName" placeholder="Название категории">
+            </div>
+
+            <button type="submit" class="btn btn-success">Редактировать</button>
+        </form>
+    {% endif %}
+{% endblock %}

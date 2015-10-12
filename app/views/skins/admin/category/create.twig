@@ -1,0 +1,21 @@
+{% extends 'templates/template_admin.twig' %}
+{%  block  content %}
+
+    <h1>Создание категории товаров</h1>
+    {% if errors %}
+        {% for error in errors %}
+        <p class="alert alert-danger">{{ error }}</p>
+            {% endfor %}
+    {% endif  %}
+    {% if result %}
+        <p class="alert alert-success">{{ result }}</p>
+    {% endif  %}
+    <form method="post">
+        <div class="form-group">
+            <label for="iputCategoryName">Название категории</label>
+            <input name="category_name" type="text" class="form-control" id="iputCategoryName" placeholder="Название категории">
+        </div>
+
+        <button type="submit" class="btn btn-success">Создать</button>
+    </form>
+{% endblock %}

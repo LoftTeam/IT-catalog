@@ -2,6 +2,8 @@
 {%  block  content %}
 
     <h1>Товары</h1>
+    <h3>Добавить товар <a href="/adminproducts/create/"><i class="glyphicon glyphicon-plus"></i></a> </h3>
+
     <table class="table table-hover">
         <tr>
             <th>id</th>
@@ -12,7 +14,6 @@
             <th>Цена</th>
             <th>Описание</th>
             <th>Категория</th>
-            <th>Добавить</th>
             <th>редактировать</th>
             <th>удалить</th>
         </tr>
@@ -20,15 +21,26 @@
             <tr>
                 <td>{{ product.id }}</td>
                 <td>{{ product.title }}</td>
-                <td><img width="100" height="100" src="{{ product.img }}" alt=""></td>
+                <td>
+                    {% if product.img %}
+                        <img width="100" height="100" src="{{ product.img }}" alt="{{ product.title }}">
+                    {% else %}
+                        <img width="100" height="100" src="/images/content/no-image.png" alt="no-img">
+                    {% endif %}
+                </td>
                 <td>{{ product.count }}</td>
                 <td>{{ product.mark }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.id_catalog }}</td>
-                <td><a href=""><i class="glyphicon glyphicon-plus"></i></a></td>
-                <td><a href=""><i class="glyphicon glyphicon-edit"></i></a></td>
-                <td><a href=""><i class="glyphicon glyphicon-remove"></i></a></td>
+                <td>
+                    {% for category in categories %}
+                        {% if product.id_catalog == category.id %}
+                        {{ category.title }}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td><a href="/adminproducts/edit/{{ product.id }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                <td><a href="/adminproducts/delete/{{ product.id }}"><i class="glyphicon glyphicon-remove"></i></a></td>
             </tr>
         {% endfor %}
 

@@ -14,6 +14,8 @@ class ClearInput
                 $data = (int)($data); break;
             case 'd':
                 $data = (double)$data; break;
+            case 'f':
+                $data = floatval($data); break;
             case 's':
                 $data = trim(strip_tags($data)); break;
 
