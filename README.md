@@ -61,9 +61,11 @@ composer install
 ```
 3. В файле app/config/config.ini изменить парамметры доступа на свои.
 4. Папка с БД  находится в /tmp
+
 ## Доступ к админке
 	admin@bk.ru
 	adminpass
+
 ## Для разработки
 	
 После создания дополнительных файлов на пример "IndexController.php" или "IndexModel.php" обязательно обновляем composer командой
