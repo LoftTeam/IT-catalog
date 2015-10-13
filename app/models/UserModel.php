@@ -25,20 +25,45 @@ class UserModel extends Model
      */
     public function getUserByID($id)
     {
-        $sql = "SELECT id,name,lastname,birthday,email,password,is_active,role,reg_date,last_update,user_hash
+        try {
+            $sql = "SELECT id,name,lastname,birthday,email,password,is_active,role,reg_date,last_update,user_hash
             FROM users
             WHERE id = :id;
         ";
 
-        $result = $this->DB->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result = $this->DB->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
 
-        $result->execute();
+            $result->execute();
 
-        $records = $result->fetch(PDO::FETCH_ASSOC);
-        return $records;
+            $records = $result->fetch(PDO::FETCH_ASSOC);
+            return $records;
+        }catch (Exception $e){
+            throw new Exception('Пользователь не найден');
+        }
 
     }
+    /*
+     * Обновить права и ативность пользователя по id
+     */
+    public function update_user_role_active_by_id($id,$is_active,$role)
+    {
+        try{
+            $sql = 'UPDATE users SET is_active = :is_active,
+                                      role = :role
+                WHERE id = :id';
+
+            $result = $this->DB->prepare($sql);
+            $result->bindParam(':role', $role, PDO::PARAM_INT);
+            $result->bindParam(':is_active', $is_active, PDO::PARAM_INT);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+            $result->execute();
+        }catch (Exception $e){
+            throw new Exception('Пользователь не изменен');
+        }
+    }
+
     /*
      * Получить пользователя по Email
      */

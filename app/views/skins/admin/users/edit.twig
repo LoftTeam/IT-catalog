@@ -1,0 +1,39 @@
+{% extends 'templates/template_admin.twig' %}
+{%  block  content %}
+
+    <h1>Редактировать пользователя</h1>
+    {% if result %}
+        <p class="alert alert-success">{{ result }}</p>
+    {% else %}
+        {% if errors %}
+            {% for error in errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+            {% endfor %}
+        {% endif  %}
+        <form method="post">
+            <div class="form-group">
+                <label >Имя Фамилия</label>
+                <h23>{{ user.name }} {{ user.lastname }}</h23>
+            </div>
+            <div class="form-group">
+                <label >Активация</label>
+                <select name="is_active">
+                    <option {% if user.is_active == 1 %} selected="selected" {% endif %}
+                            value="1">Активен</option>
+                    <option {% if user.is_active == 0 %} selected="selected" {% endif %}
+                            value="0">Не активен</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label >Права</label>
+                <select name="role">
+                    <option {% if user.role == 0 %} selected="selected" {% endif %}
+                            value="0">Пользователь</option>
+                    <option {% if user.role == 2 %} selected="selected" {% endif %}
+                            value="2">Администратор</option>
+                </select>
+            </div>
+            <button name="submit" type="submit" class="btn btn-success">Редактировать</button>
+        </form>
+    {% endif %}
+{% endblock %}
