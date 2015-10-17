@@ -1,5 +1,6 @@
 {% extends 'templates/template_main.twig' %}
 {%  block  content %}
+    {% if product_item %}
     <section class="h1">{{ product_item.title }}</section>
     <section class="item">
         <div class="item_left">
@@ -34,23 +35,31 @@
         <div class="item_right">
 
             <ul class="item_counts">
+                {% if is_logged == false %}
+                    <h4 style="color: red;">Что бы купить товар нужно
+                        <a style="color: green" href="/auth">Войти</a> или
+                        <a style="color: green" href="/register/">зарегитрироваться</a></h4>
+                {% endif %}
                 <li>
                     <div class="item_counts_price">
                         цена за 1 штуку: <span class="cart_counter">{{ product_item.price }}</span> руб.
                     </div>
                 </li>
-
             </ul>
             <div class="category_buy_counter">
-                <form action="">
+
+                <form method="post" action="/cart/">
+                    <input type="hidden" name="product_id" value="{{ product_item.id }}">
                     <div class="text_input">
                         <div class="text_input_wrap">
-                            <input class="category_count_input" type="text"/>
+                            <input name="count" class="category_count_input" type="text" value="1"/>
                         </div>
                     </div>
+                    {% if is_logged %}
+                        <a href="#" class="category_count_button">В корзину</a>
+                        <input class="category_count_submit" type="submit"/>
+                    {% endif %}
 
-                    <a href="#" class="category_count_button">В корзину</a>
-                    <input class="category_count_submit" type="submit"/>
                 </form>
             </div>
         </div>
@@ -67,4 +76,7 @@
             </ul>
         </div>
     </section>
+        {% else %}
+            <h1>Товар не найден</h1>
+            {% endif %}
 {% endblock %}

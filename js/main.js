@@ -1,5 +1,14 @@
 $(document).ready(function(){
 
+/*    if( $("#word")){
+        var word = $("#word").text()
+
+       $('.searched_word').each(function() {
+            var text = $(this).text();
+            $(this).text(text.replace(word, word));
+        });
+
+    }*/
 
     if ($('.wrap__slider').length) {
 

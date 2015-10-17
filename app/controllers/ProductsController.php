@@ -9,13 +9,13 @@ class ProductsController extends  FrontendController
 
     function actionIndex()
     {
-        if($_POST){
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
             if(isset($_POST['category_id']) ||
                 isset($_POST['from']) ||
                 isset($_POST['to']) ||
                 isset($_POST['brand'])
             ){
-                $category_id =  ClearInput::clearInput($_POST['category_id'],'s');
+                $category_id =  ClearInput::clearInput($_POST['category_id'],'i+');
                 $from = ClearInput::clearInput($_POST['from'],'i+');
                 $to = ClearInput::clearInput($_POST['to'],'i+');
                 if(empty($to)){$to = 999999;}
@@ -44,7 +44,7 @@ class ProductsController extends  FrontendController
         }
     }
 
-    function actionView($id)
+    function actionView($id = array('1'))
     {
         $id = (int)$id[0];
         $data = $this->model->get_product($id);
@@ -52,8 +52,12 @@ class ProductsController extends  FrontendController
         $data = array(
             'title' => $data['title'],
             'product_item' => $data,
+            'categories'=>$this->model->get_categories(),
+            'products'=>$this->model->get_data(),
             'is_logged'=>Session::is_logged(),
+            'is_filters_side'=>true,
         );
         $this->view->render('products/item.twig',$data);
     }
+
 }

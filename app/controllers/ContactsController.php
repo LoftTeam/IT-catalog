@@ -76,7 +76,7 @@ class ContactsController extends  FrontendController
                       Email: $email <br/>
                       $message";
                 $subject = 'Форма связаться с нами';
-                $emails[] = $config['admin_email'];
+                $emails = $config['admin_email'];
 
                 try {
                     $mail = new SendEmail($body,$emails,$subject);
@@ -88,11 +88,15 @@ class ContactsController extends  FrontendController
             }
         }
 
+        $products = new ProductsModel();
+
         $data = array(
             'title' => 'Контакты',
             'is_left_slider' => true,
             'is_right_slider' => true,
             'is_logged'=>Session::is_logged(),
+            'categories'=>$products->get_categories(),
+            'products'=>$products->get_data(),
             'managers'=> $managers,
             'errors'=> (isset($errors)) ? $errors : null,
             'result'=> (isset($result)) ? $result : null,

@@ -3,11 +3,11 @@
     <section class="h1">Поиск по сайту</section>
 
     <section class="search_sec">
-        <form action="">
+        <form method="post" action="/search/">
             <div class="search_input_wrap">
                 <div class="input_text">
                     <div class="input_text_wrap">
-                        <input type="text" placeholder="Ключеыве слова">
+                        <input name="search" type="text" placeholder="Ключеыве слова">
                     </div>
                 </div>
                 <input type="submit" value="" class="search_ico">
@@ -18,51 +18,35 @@
 
     <section class="search_results_sec">
         <div class="search_all">
-            Всего найдено: 345
+            {% if word %}
+                Всего найдено: {{ searched_products|length }} <br>
+                Запрос по ключевому слову: <span id="word">{{ word }}</span>
+            {% endif %}
+            {% if errors %}
+                <ul>
+                    {% for error in errors %}
+                        <li style="color: red;"> - {{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
+        {% if searched_products|length > 0 %}
         <ul class="search_results_list">
+            {% for searched_product in searched_products %}
             <li>
-                <a class="blue_title" href="#">Производство гипсокартона</a>
-                <div class="result_breadcrumb">
+                <a class="blue_title searched_word" href="/products/view/{{ searched_product.id }}">{{ searched_product.title }}</a>
+          {#      <div class="result_breadcrumb">
                     <a href="#">Главная</a> //
                     <a href="#">Гипсокартон</a> //
                     <a href="#">ГКЛ (гипсокартонный лист)</a>
-                </div>
-                <p>... выполняет формовочная гипсовая смесь, а ограничивают ее картонные листы Любое производство гипсокартона основывается на формовочной смеси, которая представляет собой, обожженный для удаления воды, а затем тонко измельченный природный , гипс (комплексное </p>
-                <p class="result_date">20.09.2010</p>
+                </div>#}
+                <p class="searched_word">{{ searched_product.description }}</p>
+               {# <p class="result_date">20.09.2010</p>#}
             </li>
-            <li>
-                <a class="blue_title" href="#">Технологические особенности производства гипсокартона</a>
-                <div class="result_breadcrumb">
-                    <a href="#">Главная</a> //
-                    <a href="#">Гипсокартон</a> //
-                    <a href="#">ГКЛ (гипсокартонный лист)</a>
-                </div>
-                <p>... выполняет формовочная гипсовая смесь, а ограничивают ее картонные листы Любое производство гипсокартона основывается на формовочной смеси, которая представляет собой, обожженный для удаления воды, а затем тонко измельченный природный , гипс (комплексное </p>
-                <p class="result_date">20.09.2010</p>
-            </li>
-            <li>
-                <a class="blue_title" href="#">Производство гипсокартона</a>
-                <div class="result_breadcrumb">
-                    <a href="#">Главная</a> //
-                    <a href="#">Гипсокартон</a> //
-                    <a href="#">ГКЛ (гипсокартонный лист)</a>
-                </div>
-                <p>... выполняет формовочная гипсовая смесь, а ограничивают ее картонные листы Любое производство гипсокартона основывается на формовочной смеси, которая представляет собой, обожженный для удаления воды, а затем тонко измельченный природныйй, гипс (комплексное </p>
-                <p class="result_date">20.09.2010</p>
-            </li>
+            {% endfor %}
 
-            <li>
-                <a class="blue_title" href="#">Технологические особенности производства гипсокартона</a>
-                <div class="result_breadcrumb">
-                    <a href="#">Главная</a> //
-                    <a href="#">Гипсокартон</a> //
-                    <a href="#">ГКЛ (гипсокартонный лист)</a>
-                </div>
-                <p>... выполняет формовочная гипсовая смесь, а ограничивают ее картонные листы Любое производство гипсокартона основывается на формовочной смеси, которая представляет собой, обожженный для удаления воды, а затем тонко измельченный природный , гипс (комплексное </p>
-                <p class="result_date">20.09.2010</p>
-            </li>
         </ul>
+        {% endif %}
     </section>
 
     <section class="paginator">

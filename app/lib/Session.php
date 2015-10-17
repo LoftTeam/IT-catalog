@@ -24,7 +24,6 @@ class Session
 
     public function start($data,$hash)
     {
-        session_start();
 
         setcookie("id", $data['id'], time()+60*60*24*30);
         setcookie("hash", $hash, time()+60*60*24*30);
@@ -36,7 +35,7 @@ class Session
 
     public static function is_logged()
     {
-        if(isset($_COOKIE['id']) and isset($_COOKIE['hash'])){
+        if(isset($_COOKIE['id']) && isset($_COOKIE['hash']) && isset($_SESSION['user_id'])){
 
             $model = new UserModel();
 
@@ -46,6 +45,7 @@ class Session
                 }
             }
         }
+
         return false;
     }
 }

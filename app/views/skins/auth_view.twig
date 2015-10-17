@@ -9,9 +9,6 @@
 
         <div class="authorize_body_inner">
             <div class="authorize_inner_top"></div>
-            {% if user_name %}
-                <h5>{{ user_name }} уже авторизирован(а)</h5>
-            {% else %}
                 {% if errors %}
                     {% for user in errors %}
                         <p style="color: red;">{{ user }}</p>
@@ -46,7 +43,7 @@
                 </div>
             </div>
             </form>
-            {% endif %}
+
             <div class="authorize_inner_bottom"></div>
         </div>
     </div>

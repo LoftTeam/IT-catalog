@@ -49,7 +49,7 @@ class AdmincategoryController extends BackendController
         $this->view->render('admin/category/create.twig',$data);
     }
 
-    public function actionEdit($id)
+    public function actionEdit($id = array('1'))
     {
         $id = (int)$id[0];
 

@@ -26,7 +26,7 @@ class SendEmail
 
         $this->mail->Subject = $subjects;
         $this->mail->Body = $msg;
-
+        $emails = (array)$emails;
         foreach($emails as $email){
             $this->mail->AddAddress($email,$email);
         }

@@ -13,28 +13,6 @@
                 </a>
             </li>
             <li>
-                <a href="/news" class="nav_link_wrap">
-                    <div class="nav_link_triangle">
-                        <div class="nav_link_outer">
-                            <div class="nav_link_inner">
-                                <span>Продукция</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="/clients" class="nav_link_wrap">
-                    <div class="nav_link_triangle">
-                        <div class="nav_link_outer">
-                            <div class="nav_link_inner">
-                                <span>клиентам</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li>
                 <a href="/products" class="nav_link_wrap">
                     <div class="nav_link_triangle">
                         <div class="nav_link_outer">
@@ -58,11 +36,11 @@
             </li>
         </ul>
         <div class="search">
-            <form action="">
+            <form method="post" action="/search/">
                 <div class="search_input_wrap">
                     <div class="input_text">
                         <div class="input_text_wrap">
-                            <input type="text" placeholder="Поиск по каталогу">
+                            <input name="search" type="text" placeholder="Поиск по каталогу">
                         </div>
                     </div>
                     <input class="search_ico" value="" type="submit">

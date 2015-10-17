@@ -1,0 +1,84 @@
+{% extends '/templates/template_main.twig' %}
+{%  block  content %}
+    <div class="cart">{#cart - begin#}
+        <section class="h1">Корзина</section>
+        {% if is_logged == false %}
+            <h4 style="color: red">Войдите в свой аккаунт для просмотра корзины</h4>
+        {% else %}
+        {% if errors %}
+            {% for error in errors %}
+                  <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        {% if result %}
+            <p style="color: green;">{{ result }}</p>
+        {% endif %}
+        {% if cart_products|length > 0 %}
+            <h3>Кол-во: {{ cart_products|length }}</h3>
+            <table class="table_cart">
+                <tbody>
+                <tr>
+                    <th>Категория</th>
+                    <th>название</th>
+                    <th>Изображение</th>
+                    <th>кол-во</th>
+                    <th>Цена</th>
+                    <th></th>
+                </tr>
+
+                {% for cart_product in cart_products %}
+                    <tr>
+                        <td>{{ cart_product.category_name }}</td>
+                        <td>{{ cart_product.title }}</td>
+                        <td>
+                            {% if cart_product.img %}
+                                <img width="100" height="100" src="{{ cart_product.img }}" alt="{{ cart_product.title }}">
+                            {% else %}
+                                <img width="60" height=40" src="/images/content/no-image.png" alt="no-img">
+                            {% endif %}
+                        </td>
+                        <td>{{ cart_product.count }}</td>
+                        <td>{{ cart_product.total_price }} грн.</td>
+                        <td><a class="link_remove" href="/cart/delete/{{ cart_product.cart_id }}">Удалить</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="cart_total_price">Итого: {{ total_price }} грн.</div>
+        {% endif %}
+        {% endif %}{# {% if cart_products|length > 0 %}#}
+    </div>{#cart - end#}
+    {% if cart_products|length > 0 %}
+    <div class="order">
+        <section class="h1">Оформление заказа</section>
+        <form action="/cart/order/" method="post">
+            <div class="feedback_form_field">
+                <h3>Способ оплаты: </h3>
+                <ul>
+                    <li><input name="payment_methot" type="radio" value="Webmoney">Webmoney</li>
+                    <li><input checked name="payment_methot" type="radio" value="Яндекс.Деньги">Яндекс.Деньги</li>
+                    <li><input name="payment_methot" type="radio" value="Наличные">Наличные</li>
+                    <li><input name="payment_methot" type="radio" value="Безналичный расчет">Безналичный расчет</li>
+
+                </ul>
+            </div>
+            <div class="feedback_form_field">
+                <h3>Служба доставки: </h3>
+                <ul>
+                    <li><input name="delivery_service" type="radio" value="Самовывоз">Самовывоз (бесплатно)</li>
+                    <li><input checked name="delivery_service" type="radio" value="Курьер">Курьер</li>
+                    <li><input name="delivery_service" type="radio" value="Новая почта">Новая почта</li>
+                </ul>
+            </div>
+            <div class="feedback_form_field">
+                <textarea name="message" class="feedback_massage" placeholder="Текст сообщения"></textarea>
+                <div class="feedback_require_star"></div>
+            </div>
+
+            <div class="feedback submit block">
+                <input class="feedback_submit_btn" name="submit" type="submit" value="Заказать">
+            </div>
+        </form>
+    </div>
+    {% endif %}{# {% if cart_products|length > 0 %}#}
+{% endblock %}

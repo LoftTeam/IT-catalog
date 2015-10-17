@@ -39,13 +39,35 @@ class ProductsModel extends Model
         return $records;
     }
 
+    public function search($words)
+    {
+        try{
+            $sql = "SELECT id,title,img,mark,price,description
+                    FROM products
+                    WHERE MATCH (title,mark,description) AGAINST (:words  IN BOOLEAN MODE)
+                    ";
+
+            $stmt = $this->DB->prepare($sql);
+            $stmt->bindParam(':words', $words, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $records;
+
+        }catch (Exception $e){
+            throw new Exception('Ничего не найдено');
+        }
+
+    }
+
     public function get_product($id)
     {
         try{
             $sql = "SELECT products.id, products.title,products.img,products.mark,products.id_catalog, products.price,
                     products.description, products.count, category_products.title as category_name
                     FROM products
-                    LEFT JOIN category_products ON products.id_catalog = category_products.id WHERE products.id = :id";
+                    LEFT JOIN category_products ON products.id_catalog = category_products.id
+                    WHERE products.id = :id";
 
             $stmt = $this->DB->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -53,8 +75,8 @@ class ProductsModel extends Model
             $records = $stmt->fetch(PDO::FETCH_ASSOC);
             return $records;
             }catch (Exception $e){
-        throw new Exception('Продукт не найден');
-        }
+                 throw new Exception('Продукт не найден');
+            }
     }
 
     public function get_categories()

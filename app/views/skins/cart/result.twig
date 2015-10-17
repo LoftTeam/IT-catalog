@@ -1,0 +1,16 @@
+{% extends '/templates/template_main.twig' %}
+{%  block  content %}
+    <section class="h1">Заказ</section>
+    {% if is_logged == false %}
+        <h4 style="color: red">Войдите в свой аккаунт для просмотра корзины</h4>
+    {% else %}
+        {% if errors %}
+            {% for error in errors %}
+                <p style="color: red;">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+        {% if result %}
+            <p style="color: green;">{{ result }}</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

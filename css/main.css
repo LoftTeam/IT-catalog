@@ -3170,3 +3170,26 @@ footer {
 .banner_phone-link{
   text-decoration: none !important;
 }
+.link_remove{
+  text-decoration: none;
+  color: red;
+  font-size: 13px;
+}
+.cart{
+  margin-bottom: 60px;
+}
+.cart_total_price{
+  float: right;
+  font-size: 18px;
+}
+.table_cart{
+  border:1px solid #008200;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.table_cart td{
+  border:1px solid #008200;
+  padding: 10px;
+}
