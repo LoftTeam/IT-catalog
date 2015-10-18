@@ -15,6 +15,21 @@ class UserModel extends Model
         return $records;
     }
 
+    public function getAllusers_by_role($role)
+    {
+        $role = (string)$role;
+        $sql = "SELECT id,name,lastname,birthday,email,password,is_active,role,reg_date,last_update,user_hash
+            FROM users
+            WHERE role = :role";
+
+        $result = $this->DB->prepare($sql);
+        $result->bindParam(':role', $role, PDO::PARAM_STR);
+        $result->execute();
+
+        $records = $result->fetchAll(PDO::FETCH_ASSOC);
+        return $records;
+    }
+
     public static function encrypt_pass($password)
     {
         return  md5(md5(trim($password)));

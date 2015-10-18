@@ -1,0 +1,43 @@
+{% extends 'templates/template_admin.twig' %}
+{%  block  content %}
+    {% if errors %}
+        {% for error in errors %}
+            <p class="alert alert-danger">{{ error }}</p>
+        {% endfor %}
+    {% endif  %}
+    <h1>Заказ <span class="badge">{{ order.id }}</span></h1>
+    <h4>Имя фамилия: {{ order.name }} {{ order.lastname }}</h4>
+    <form class="form-inline" method="post">
+        <input name="usr_id" type="hidden" value="{{ order.id_user }}">
+        <label style="font-size: 20px;">Статус: </label>
+        <select name="status" class="form-control" >
+            <option {% if order.status == 'В ожидании' %} selected {% endif %} value="В ожидании">В ожидании</option>
+            <option {% if order.status == 'Отказ' %} selected {% endif %} value="Отказ">Отказ</option>
+            <option {% if order.status == 'Оформлен' %} selected {% endif %} value="Оформлен">Оформлен</option>
+        </select>
+        <input class="btn btn-success" type="submit" value="Изменить">
+    </form>
+
+    <h4>Дата заказа: {{ order.date_order }}</h4>
+    <h4>Способ оплаты {{ order.payment_methot }}</h4>
+    <h4>Служба доставки: {{ order.delivery_service }}</h4>
+    <h4>Сообщение:{{ order.message }}</h4>
+
+    <table class="table table-hover">
+        <tr>
+            <th>Категория</th>
+            <th>Название</th>
+            <th>кол-во</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.category_name }}</td>
+                <td>{{ product.title }}</td>
+                <td>{{ product.count }}</td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    <h2>Итого: {{ total_price }}грн.</h2>
+
+{% endblock %}

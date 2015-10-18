@@ -2,5 +2,34 @@
 {%  block  content %}
 
     <h1>Рассылка писем</h1>
+    {% if result %}
+        <p style="color: green;">{{ result }}</p>
+    {% endif %}
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li style="color: red;"> - {{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form class="form-horizontal" method="post">
+        <div class="form-group">
+            <label >Выберите кому отосласть письмо:</label>
+            <select name="whom" class="form-control">
+                <option value="0">Клиентам</option>
+                <option value="2">Администраторам</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label >Тема сообщения:</label>
+            <input name="subject" type="text" placeholder="Тема сообщения">
+        </div>
+        <div class="form-group">
+            <label >Текст сообщения:</label>
+            <textarea name="text" class="form-control" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Отправить</button>
+    </form>
 
 {% endblock %}

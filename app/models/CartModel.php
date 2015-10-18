@@ -89,4 +89,88 @@ class CartModel extends Model
             throw new Exception('Не удалось из корзины');
         }
     }
+
+    public function get_all_orders()
+    {
+        try{
+            $sql = "SELECT id,status,date_order FROM orders";
+
+            $stmt = $this->DB->query($sql);
+            $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $records;
+        }catch (Exception $e){
+            throw new Exception('Не удалось получить заказы');
+        }
+    }
+
+    public function get_order_by_id($id)
+    {
+        try{
+            $sql = "SELECT orders.id,orders.status,orders.id_user,orders.date_order,orders.
+                            payment_methot,orders.delivery_service,orders.message,
+                            users.name, users.lastname
+                    FROM orders
+                    INNER JOIN users ON users.id = orders.id_user
+                    WHERE orders.id = $id;
+            ";
+
+            $stmt = $this->DB->query($sql);
+            $records = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $records;
+
+        }catch (Exception $e){
+            throw new Exception('Не удалось получить заказ');
+        }
+    }
+
+    public function get_products_from_order_by_id($id)
+    {
+        try{
+            $sql = "SELECT order_products.count,products.title,products.price,category_products.title as category_name
+                    FROM order_products
+                    INNER JOIN products ON products.id = order_products.product_id
+                    INNER JOIN category_products ON products.id_catalog = category_products.id
+                    WHERE order_products.id_order = $id;
+            ";
+
+            $stmt = $this->DB->query($sql);
+            $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $records;
+        }catch (Exception $e){
+            throw new Exception('Не удалось получить товары');
+        }
+    }
+
+    public function update_order_status_by_id($id,$new_status)
+    {
+        try{
+            $sql = "UPDATE orders SET status = :new_status WHERE id = :id;";
+
+            $stmt = $this->DB->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':new_status', $new_status, PDO::PARAM_STR);
+            $stmt->execute();
+
+        }catch (Exception $e){
+            throw new Exception('Не удалось обновить статус');
+        }
+    }
+
+    public function delete_order_by_id($id)
+    {
+        try {
+            $sql = "DELETE
+                    FROM orders
+                    WHERE id = :id;
+                    DELETE FROM order_products
+                    WHERE id_order=:id;
+                    ";
+
+            $stmt = $this->DB->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+        }catch (Exception $e){
+                throw new Exception('Не удалось удалить заказ');
+        }
+    }
 }
