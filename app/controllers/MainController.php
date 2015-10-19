@@ -11,7 +11,7 @@ class MainController extends FrontendController
     {
         $data = array(
             'title' => 'Главная страница',
-            'is_photo_slider' => true,
+            'is_photo_slider' => false,
             'is_slider' => true,
             'is_right_sidebar' => true,
             'categories'=>$this->model->get_categories(),

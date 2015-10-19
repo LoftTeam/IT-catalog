@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 19, 2015 at 10:16 PM
+-- Generation Time: Oct 19, 2015 at 10:51 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -66,9 +66,7 @@ INSERT INTO `category_products` (`id`, `title`) VALUES
 (7, 'Радиотелефоны'),
 (8, 'Игры'),
 (9, 'Фотоаппараты'),
-(10, 'Samrt TV'),
-(11, 'Смартфоны'),
-(12, 'Новая категоря');
+(10, 'Samrt TV');
 
 -- --------------------------------------------------------
 
@@ -167,9 +165,9 @@ INSERT INTO `products` (`id`, `title`, `img`, `mark`, `count`, `price`, `descrip
 (63, 'World of Warcraft: Карта оплаты игрового времени (60 дней) (русская версия)\n\n', '/images/products/games/record_416227517.jpg', 'Blizzard', 4, 399, 'Карта оплаты игрового времени позволяет продлить время игры на 60 дней.\n', 8),
 (61, 'World of Warcraft: Карта оплаты игрового времени (60 дней) (русская версия)\n', '/images/products/games/record_416227517.jpg', 'Blizzard', 4, 399, 'Карта оплаты игрового времени позволяет продлить время игры на 60 дней.\n', 8),
 (62, 'The Elder Scrolls Online (PC, английская версия)\n', '/images/products/games/record_77240039.jpg', 'Valve', 43, 799, 'первые за свою двадцатилетнюю историю знаменитая фэнтезийная ролевая игра The Elder Scrolls выходит в онлайн. Отправляйтесь в грандиозное путешествие в одиночку или вместе с друзьями, собратьями по гильдиям и тысячами союзников. К вашим услугам богатства Тамриэля, тайны Морровинда, необъятные каменные джунгли Даггерфолла и многое другое. Впишите свое имя на скрижали истории и вступайте в грандиозные битвы между игроками, ведь в них решается судьба целого мира.', 8),
-(60, 'World of Warcraft: Warlords of Draenor', '/images/products/games/record_180372132.jpg', 'Blizzard', 3, 599, 'Идет эра старой Орды, закаленной железом, а не кровью демонов. Тяжелая поступь союза великих орочьих кланов и грохота ужасающих боевых машин сотрясает Дренор. Скоро падет Азерот. А за ним – тысячи других миров…\r\n"', 1),
+(60, 'World of Warcraft: Warlords of Draenor', '/images/products/games/record_180372132.jpg', 'Blizzard', 3, 599, 'Идет эра старой Орды, закаленной железом, а не кровью демонов. Тяжелая поступь союза великих орочьих кланов и грохота ужасающих боевых машин сотрясает Дренор. Скоро падет Азерот. А за ним – тысячи других миров…\r\n""', 8),
 (59, 'Heroes of the Storm (PC, Jewel, Русская версия)\n', '/images/products/games/record_586573892.jpg', 'Blizzard', 6, 459, 'Heroes of the Storm – потрясающе динамичная командная игра, в которой вы сможете встретить своих любимых персонажей из игр Blizzard. \nВыберите способности и облик героев и разработайте свою уникальную игровую тактику. Объединитесь с друзьями и примите участие в стремительных битвах.\nИ помните: от выбора поля боя будет напрямую зависеть стратегия и стиль игры!\n', 8),
-(58, 'World of Warcraft: Warlords of Draenor', '/images/products/games/record_180372132.jpg', 'Blizzard', 3, 599, 'Идет эра старой Орды, закаленной железом, а не кровью демонов. Тяжелая поступь союза великих орочьих кланов и грохота ужасающих боевых машин сотрясает Дренор. Скоро падет Азерот. А за ним – тысячи других миров…\r\n"', 1),
+(58, 'World of Warcraft: Warlords of Draenor', '/images/products/games/record_180372132.jpg', 'Blizzard', 3, 599, 'Идет эра старой Орды, закаленной железом, а не кровью демонов. Тяжелая поступь союза великих орочьих кланов и грохота ужасающих боевых машин сотрясает Дренор. Скоро падет Азерот. А за ним – тысячи других миров…\r\n""', 8),
 (55, 'Panasonic KX-TG2511UAM Metallic\n', '/images/products/radio_phone/2059845.jpg', 'Panasonic', 7, 769, 'Тип трубки: Беспроводной\nОпределение номера: АОН + Caller ID\nАвтоответчик: Нет\nЖК-дисплей: Монохромный, голубая ', 7),
 (56, 'Panasonic KX-TG2512UAT Titan', '', 'Panasonic', 5, 1199, 'Тип трубки: Беспроводной\nОпределение номера: АОН + Caller ID\nАвтоответчик: Нет\nЖК-дисплей: Монохромный, голубая ', 7),
 (57, 'Heroes of the Storm (PC, Jewel, Русская версия)\n', '', 'Blizzard', 6, 459, 'Heroes of the Storm – потрясающе динамичная командная игра, в которой вы сможете встретить своих любимых персонажей из игр Blizzard. \nВыберите способности и облик героев и разработайте свою уникальную игровую тактику. Объединитесь с друзьями и примите участие в стремительных битвах.\nИ помните: от выбора поля боя будет напрямую зависеть стратегия и стиль игры!\n', 8),
@@ -218,7 +216,7 @@ INSERT INTO `products` (`id`, `title`, `img`, `mark`, `count`, `price`, `descrip
 (11, 'Sony Xperia Z3 Tablet Compact 4G 16GB White\n', '/images/products/tablets/record_165499382.jpg', 'Sony', 12, 12471, 'Экран 8" IPS (1920x1200) емкостный Multi-Touch / Qualcomm Snapdragon MSM8974AB (2.5 ГГц) / RAM 3 ГБ / SSD 16 ГБ + поддержка карт памяти microSD / Wi-Fi / 3G / 4G LTE / Bluetooth 4.0 / NFC / пыле/влагозащищенный / камера основная 8.1 Мп, фронтальная - 2.2 Мп / GPS / ГЛОНАСС / ОС Android 4.4 (Kitkat) / 270 г / белый\n', 2),
 (10, 'Apple A1475 iPad Air Wi-Fi 4G 16GB\n', '/images/products/tablets/apple_ip.jpg', 'Apple', 32, 12953, 'Экран 9.7" (2048 x 1536) Multi-Touch / Apple A7 (1.3 ГГц) / ОЗУ 1 ГБ / Флеш-память 16 ГБ / 3G / 4G / EV-DO / Wi-Fi / Bluetooth 4.0 / основная камера 5Мп, фронтальная 1.2 Мп / GPS / ОС iOS 7 / вес 478 г / серый\n', 2),
 (9, 'Apple A1489 iPad mini with Retina display Wi-Fi', '', 'Apple', 12, 7123, 'Экран 7.9" (2048 x 1536) емкостной Multi-Touch / Apple A7 (1.3 ГГц) / ОЗУ 1 ГБ / Флеш-память 16 ГБ / Wi-Fi / Bluetooth 4.0 / основная камера 5 Мп, фронтальная - 1.2 Мп / ОС iOS 7.0 / вес 331 г / серебряный\n', 2),
-(8, 'Asus MeMO Pad 7 16GB Black', '/images/products/phones/record_114017740.jpg', 'Asus', 21, 4904, 'Экран 7" IPS (1920x1200) емкостный Multi-Touch / Intel Atom Z3560 (1.83 ГГц) / RAM 2 ГБ / 16 ГБ встроенной памяти + поддержка карт памяти microSD / Wi-Fi / Bluetooth 4.0 / основная камера 5 Мп, фронтальная - 2 Мп / GPS / ГЛОНАСС / Android 4.4 (KitKat) / 269 г / черный\n', 2),
+(8, 'Asus MeMO Pad 7 16GB Black', '/images/products/tablets/record_114017740.jpg', 'Asus', 21, 4904, 'Экран 7" IPS (1920x1200) емкостный Multi-Touch / Intel Atom Z3560 (1.83 ГГц) / RAM 2 ГБ / 16 ГБ встроенной памяти + поддержка карт памяти microSD / Wi-Fi / Bluetooth 4.0 / основная камера 5 Мп, фронтальная - 2 Мп / GPS / ГЛОНАСС / Android 4.4 (KitKat) / 269 г / черный\r\n"', 2),
 (7, 'Asus Transformer Pad TF103C 16GB Doc Black ', '/images/products/tablets/copy_asus_tf103c_1a.jpg', 'Asus', 12, 4578, 'кран 10.1" (1280x800) емкостной Multi-Touch / Intel Atom Z3745 (1.33 ГГц) / RAM 1 ГБ / флеш память 16 ГБ + поддержка карт памяти MicroSD / Wi-Fi 802.11 a/b/g/n / Bluetooth 4.0 / основная камера 2 Мп + фронтальная 0.3 Мп / GPS + GLONASS / ОС Android 4.4 / 550 г / черный + док-станция (QWERTY-клавиатура, тачпад, USB 2.0)\n', 2),
 (6, 'Apple MacBook Pro Retina 13" ', '/images/products/notebook/record_128681450.jpg', 'Apple MacBook Pro Retina 13" ', 21, 85531, 'Экран 13.3" IPS (2560x1600) Retina LED, глянцевый / Intel Core i7 (3.1 ГГц) / RAM 16 ГБ / SSD 1 TБ / Intel Iris Graphics 6100 / без ОД / Wi-Fi / Bluetooth / веб-камера / OS X Yosemite / 1.58 кг\nПодробнее: ', 1),
 (5, 'Apple MacBook Air 13" ', '/images/products/notebook/record_128683725.jpg', 'Apple', 2, 26637, 'Экран 13.3" (1440x900) WXGA+ LED, глянцевый / Intel Core i5 (1.6 - 2.7 ГГц) / RAM 4 ГБ / SSD 128 ГБ / Intel HD Graphics 6000 / без ОД / Wi-Fi / Bluetooth / веб-камера / OS X Yosemite / 1.35 к', 1),
@@ -287,7 +285,7 @@ INSERT INTO `users` (`id`, `name`, `lastname`, `birthday`, `email`, `password`, 
 (28, 'Сергей', 'Безруков', '1976-08-18', 'sergey-bezrukov@mail.ru', '224cf2b695a5e8ecaecfb9015161fa4b', '1', '0', '2015-10-02 09:29:05', '2015-08-19', ''),
 (29, 'Джодж', 'Буш', '1962-05-12', 'joege-bush@icloud.com', '224cf2b695a5e8ecaecfb9015161fa4b', '1', '0', '2015-10-02 09:29:05', '2015-08-26', ''),
 (30, 'Сергей', 'Зверев', '1985-08-10', 'sergey-zverev@yandex.ru', '224cf2b695a5e8ecaecfb9015161fa4b', '1', '0', '2015-10-02 09:29:05', '2015-08-19', ''),
-(40, 'Евгений', 'Васильцов', '1990-02-11', 'eugenevasilsov@gmail.com', '224cf2b695a5e8ecaecfb9015161fa4b', '1', '2', '2015-10-19 18:46:29', NULL, 'eea7a59cf5f62183477432fcd79c97fc'),
+(40, 'Евгений', 'Васильцов', '1990-02-11', 'eugenevasilsov@gmail.com', '224cf2b695a5e8ecaecfb9015161fa4b', '1', '2', '2015-10-19 20:39:36', NULL, '3291ad24933ad048903a47c5d1ce7b1b'),
 (41, 'Екатерина', 'Вторая', '1985-10-02', 'ekaterina-vtoraya@mail.ru', '224cf2b695a5e8ecaecfb9015161fa4b', '1', '0', '2015-10-19 18:45:03', NULL, '734598b1415000d4961c3e015aebd294'),
 (43, 'admin', 'adminov', '1985-10-14', 'admin@bk.ru', 'fb47fde2fbd4931d05aa33dd9b21831c', '1', '2', '2015-10-12 13:53:05', NULL, 'eb18b002c1041f5c5108d00f30bde7d1'),
 (44, 'Евгений', 'Гвардий', '1990-12-08', 'jehe4ka@bk.ru', '224cf2b695a5e8ecaecfb9015161fa4b', '1', '0', '2015-10-18 18:09:36', NULL, '');
