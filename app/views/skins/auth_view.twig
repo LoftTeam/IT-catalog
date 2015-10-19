@@ -7,6 +7,10 @@
             <p>Авторизация</p>
         </div>
 
+        {% if user_name %}
+            <h3>ВЫ уже авторизированы</h3>
+            <h4><a href="/auth/logout/">Выйти</a></h4>
+        {% else %}
         <div class="authorize_body_inner">
             <div class="authorize_inner_top"></div>
                 {% if errors %}
@@ -46,6 +50,7 @@
 
             <div class="authorize_inner_bottom"></div>
         </div>
+        {% endif %}
     </div>
     <div class="authorize_bottom"></div>
 </div>

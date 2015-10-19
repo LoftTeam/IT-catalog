@@ -79,6 +79,45 @@ class ProductsModel extends Model
             }
     }
 
+    public function get_all_products()
+    {
+        try{
+            $sql = "SELECT * FROM products";
+
+            $stmt = $this->DB->prepare($sql);
+            $stmt->execute();
+            $records = $stmt->fetchALL(PDO::FETCH_ASSOC);
+            return $records;
+
+        }catch (Exception $e){
+            throw new Exception('Ничего не найдено');
+        }
+    }
+
+    public function import_data($table1,$table2,$table3,$table4,$table5,$table6,$table7,$table8)
+    {
+        $sql="INSERT INTO products(id,title,img,mark,count,price,description,id_catalog)
+            VALUES(:id,:product_name,:product_img,:mark,:count,:price,:description,:category_id)";
+
+        $stmt = $this->DB->prepare($sql);
+        $stmt->bindParam(':id', $table1);
+        $stmt->bindParam(':product_name', $table2);
+        $stmt->bindParam(':product_img', $table3);
+        $stmt->bindParam(':mark', $table4);
+        $stmt->bindParam(':count', $table5);
+        $stmt->bindParam(':price', $table6);
+        $stmt->bindParam(':description', $table7);
+        $stmt->bindParam(':category_id', $table8);
+        $stmt->execute();
+    }
+
+    function delete_all_products()
+    {
+        $sql = "DELETE FROM products";
+
+        $this->DB->query($sql);
+    }
+
     public function get_categories()
     {
         try{

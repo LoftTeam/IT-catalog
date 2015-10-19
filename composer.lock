@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "30c7471f723eacfb30956cc42e31ef90",
+    "hash": "8890e0706b7eb704ea84164294d60840",
     "packages": [
         {
             "name": "phpmailer/phpmailer",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "d9b8d4a3714e9c303e8935da33401e08a5758889"
+                "reference": "881289ba6490c37cd7e9e9df98653c3cadcb81ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/d9b8d4a3714e9c303e8935da33401e08a5758889",
-                "reference": "d9b8d4a3714e9c303e8935da33401e08a5758889",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/881289ba6490c37cd7e9e9df98653c3cadcb81ed",
+                "reference": "881289ba6490c37cd7e9e9df98653c3cadcb81ed",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,64 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2015-09-19 09:40:53"
+            "time": "2015-10-14 21:33:44"
+        },
+        {
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2015-05-01 07:00:55"
         },
         {
             "name": "twig/twig",
@@ -72,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "40730603f05e651e6a6aa2db11135c891e7b713f"
+                "reference": "112c5112609ff74df6e6a1a7375efc30f442c0db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/40730603f05e651e6a6aa2db11135c891e7b713f",
-                "reference": "40730603f05e651e6a6aa2db11135c891e7b713f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/112c5112609ff74df6e6a1a7375efc30f442c0db",
+                "reference": "112c5112609ff74df6e6a1a7375efc30f442c0db",
                 "shasum": ""
             },
             "require": {
@@ -125,7 +182,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2015-09-21 07:04:37"
+            "time": "2015-10-13 07:18:23"
         }
     ],
     "packages-dev": [],

@@ -38,7 +38,6 @@ class AuthController extends  FrontendController
                     'id'=> $user['id'],
                     'name'=> $user['name'],
                     'role' =>$user['role'],
-                    'is_logged'=>Session::is_logged(),
                 );
 
                 $this->session->start($ses_data,$hash);

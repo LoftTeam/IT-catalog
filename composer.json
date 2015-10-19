@@ -10,7 +10,8 @@
 
   "require": {
     "phpmailer/phpmailer": "dev-master",
-    "twig/twig":"dev-master"
+    "twig/twig":"dev-master",
+    "phpoffice/phpexcel":"1.8.1"
   },
   "autoload":{
     "classmap":[
