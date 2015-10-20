@@ -8,8 +8,9 @@
         </div>
 
         {% if user_name %}
-            <h3>ВЫ уже авторизированы</h3>
+            <h3>{{ user_name }}, вы уже авторизированы</h3>
             <h4><a href="/auth/logout/">Выйти</a></h4>
+            <h4><a href="/auth/logout/">На главную</a></h4>
         {% else %}
         <div class="authorize_body_inner">
             <div class="authorize_inner_top"></div>
@@ -40,10 +41,10 @@
 
             <div class="authorize_footer">
                {# <a class="authorize_remember" href="#">Напомнить пароль</a>#}
-                <a class="authorize_register" href="/register">Регистрация</a>
-                <input name="submit" type="submit" value="Войти">
-                <div class="authorize_submit_block">
 
+                <input class="btn1" name="submit" type="submit" value="Войти">
+                <div class="authorize_submit_block">
+                    <a class="authorize_register" href="/register">Регистрация</a>
                 </div>
             </div>
             </form>
