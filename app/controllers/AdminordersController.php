@@ -49,7 +49,8 @@ class AdminordersController extends  BackendController
                 $emails = $user['email'];
 
                 try {
-                    $mail = new SendEmail($body,$emails,$subject);
+                    $mail = new SendEmail();
+                    $mail->send($body,$emails,$subject);
 
                 }catch (Exception $e){
                     $errors[] = $e->getMessage();

@@ -6,24 +6,23 @@ class SendEmail
     private $mail;
     private $body;
 
-    function __construct($msg,$emails,$subjects)
+    function __construct()
     {
+        $config = parse_ini_file(ROOT."/app/config/config.ini");
         $this->mail = new PHPMailer;
         $this->mail->isSMTP();
-        $this->mail->Host = 'smtp.mail.ru';
+        $this->mail->Host = $config['smtp_host'];
         $this->mail->SMTPAuth = true;
-        $this->mail->SMTPSecure = 'ssl';
-        $this->mail->CharSet = 'UTF-8';
-        $this->mail->Port = 465;
-        $this->mail->Username = 'loftteam@mail.ru';
-        $this->mail->Password = '5F6GVToU';
-        $this->mail->setFrom('loftteam@mail.ru', 'Администратор LoftTeam');
-        $this->send($msg,$emails,$subjects);
+        $this->mail->SMTPSecure = $config['smtp_SMTPSecure'];
+        $this->mail->CharSet = $config['smtp_charset'];
+        $this->mail->Port = $config['smtp_port'];
+        $this->mail->Username = $config['smtp_username'];
+        $this->mail->Password = $config['smtp_password'];
+        $this->mail->setFrom($config['smtp_email'], 'Администратор LoftTeam');
     }
 
-    private function send($msg,$emails,$subjects)
+    public function send($msg,$emails,$subjects)
     {
-
         $this->mail->Subject = $subjects;
         $this->mail->Body = $msg;
         $emails = (array)$emails;

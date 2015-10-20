@@ -124,7 +124,8 @@ class CartController extends FrontendController
                     $emails = $config['admin_email'];
 
                     try {
-                        $mail = new SendEmail($body,$emails,$subject);
+                        $mail = new SendEmail();
+                        $mail->send($body,$emails,$subject);
                         $result = 'Письмо успешно отправлено';
 
                     }catch (Exception $e){
@@ -141,7 +142,8 @@ class CartController extends FrontendController
                     $emails = $user['email'];
 
                     try {
-                        $mail = new SendEmail($body,$emails,$subject);
+                        $mail = new SendEmail();
+                        $mail->send($body,$emails,$subject);
                         $result = 'Письмо успешно отправлено';
 
                     }catch (Exception $e){
